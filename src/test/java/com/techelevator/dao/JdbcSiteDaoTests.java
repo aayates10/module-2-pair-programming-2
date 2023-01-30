@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Site;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,7 +24,11 @@ public class JdbcSiteDaoTests extends BaseDaoTests {
 
         assertEquals(2,sites.size());
     }
-
+    @Test
+    public void getAllReservations() {
+        List<Site> sites = dao.getAvailibleSites(1);
+        Assert.assertEquals("Incorrect number of Sites", 2, sites.size());
+    }
     public void getAvailableSites_Should_ReturnSites() {
 
     }

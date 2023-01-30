@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Campground;
+import com.techelevator.model.Park;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
@@ -18,7 +19,14 @@ public class JdbcCampgroundDao implements CampgroundDao {
 
     @Override
     public List<Campground> getCampgroundsByParkId(int parkId) {
-        return new ArrayList<>();
+        List<Campground> CampByPark = new ArrayList<>();
+        String Sql = "Select * from campground WHERE park_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(Sql,parkId);
+        while (results.next()){
+            CampByPark.add(mapRowToCampground(results));
+        }
+
+        return CampByPark;
     }
 
     private Campground mapRowToCampground(SqlRowSet results) {

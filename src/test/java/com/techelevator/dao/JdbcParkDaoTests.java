@@ -1,6 +1,9 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Park;
+import com.techelevator.model.Reservation;
+import com.techelevator.model.Site;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,6 +19,7 @@ public class JdbcParkDaoTests extends BaseDaoTests {
     public void setup() {
         dao = new JdbcParkDao(dataSource);
     }
+
 
     @Test
     public void getParksTest_Should_ReturnAllParksInLocationAlphaOrder() {
